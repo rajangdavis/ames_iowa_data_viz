@@ -1,0 +1,23 @@
+@import url(https://fonts.googleapis.com/css?family=Overpass+Mono);
+
+body{
+	text-align: left;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+section *{
+	font-family: "Overpass Mono" !important;
+}
+.axis .domain {
+  display: none;
+}
+g.tick *{
+	stroke:#000;
+}

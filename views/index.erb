@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+	<link rel="stylesheet" type="text/css" href="/css/reveal.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="/css/black.min.css"> -->
+	<link rel="stylesheet" type="text/css" href="/css/white.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+</head>
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<!-- <section>
+			<h1 id="title">The Cost of Quality</h1>
+			<br>
+			<h2 class="spaced">Ames Iowa House Pricing Data</h3>
+			<h3>by Rajan Davis</h1>
+			</section>
+
+			<section>
+			<h1>Introduction</h1>
+			</section>
+
+			<section>
+			<br>
+			<h1>Methodology:</h1>
+			<ul>
+
+			</ul>
+			</section>
+
+			<section>
+			<br>
+			<h1>Finding 1:</h1>
+			</section> -->
+			<section>
+				<section>
+					<h4>Total Sales Price by Year Built</h4>
+					<br>
+					<svg id="bar-chart-4" width="960" height="500"></svg>
+				</section>
+				<section>
+					<h4>Average Sales Price by Year Built</h4>
+					<br>
+					<svg id="bar-chart-3" width="960" height="500"></svg>
+				</section>
+				<section>
+					<h4>Distribution of Quality by Year Built</h4>
+					<br>
+					<svg id="bar-chart-1" width="960" height="500"></svg>
+				</section>
+				<section>
+					<h4>Aggregate Sales Price by Overall Quality and Year Built</h4>
+					<br>
+					<svg id="bar-chart-2" width="960" height="500"></svg>
+				</section>
+			</section>
+
+			<section>
+			<h1>Questions?</h1>
+			</section>
+		</div>
+	</div>
+</body>
+<script src="/js/reveal.min.js"></script>
+<script>
+	Reveal.initialize();
+	const barChart1Data = <%= @bar_chart_1_data %>;
+</script>
+<script src="/js/d3.v4.min.js"></script>
+<script src="/js/data-structures.js"></script>
+<script src="/js/data-viz.js"></script>
+<script src="/js/data-viz2.js"></script>
