@@ -10,7 +10,6 @@ const plotBarChart = (elemSelector, data, xAxis, xAxisTitle, yAxis, yAxisTitle) 
 
     let g = barChart.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-
     x.domain(data.map(function(d) { return d[xAxis]; }));
     y.domain([0, d3.max(data, function(d) { return d[yAxis]; })]);
 
@@ -20,7 +19,7 @@ const plotBarChart = (elemSelector, data, xAxis, xAxisTitle, yAxis, yAxisTitle) 
         .attr("transform", "translate(0," + height + ")")
         .append("text")
             .style("fill","#000")
-            .attr("y", y(y.ticks().pop()) + 0.5)
+            .attr("y", 24.5)
             .attr("x", (width / 2 ) )
             .attr("fill", "#000")
             .attr("font-weight", "bold")
@@ -37,7 +36,7 @@ const plotBarChart = (elemSelector, data, xAxis, xAxisTitle, yAxis, yAxisTitle) 
             .style("fill","#000")
             .attr("x", -35)
             .attr("y", y(y.ticks().pop()) + 0.5)
-            .attr("dy", "-3.32em")
+            .attr("dy", "-1.32em")
             .attr("fill", "#000")
             .attr("font-weight", "bold")
             .attr("text-anchor", "start")
@@ -53,5 +52,7 @@ const plotBarChart = (elemSelector, data, xAxis, xAxisTitle, yAxis, yAxisTitle) 
             .attr("height", function(d) { return height - y(d[yAxis]); });
 }
 
-plotBarChart("#bar-chart-3", averageSalesPriceByYear, "year" , "Year Built (1872 - 2010)", "averageSalePrice", "Average Sales Price")
-plotBarChart("#bar-chart-4", totalSalesPriceByYear, "year" , "Year Built (1872 - 2010)", "totalSalePrice", "Total Sales Price")
+plotBarChart("#bar-chart-3", averageSalesPriceByYearBuilt, "year" , "Year Built (1872 - 2010)", "averageSalePrice", "Average Sales Price")
+plotBarChart("#bar-chart-4", totalSalesPriceByYearBuilt, "year" , "Year Built (1872 - 2010)", "totalSalePrice", "Total of Sales Price")
+plotBarChart("#bar-chart-7", totalSalesPriceByYearModded, "year" , "Year Modified (1950 - 2010)", "totalSalePrice", "Total of Sales Price")
+plotBarChart("#bar-chart-8", averageSalesPriceByYearModded, "year" , "Year Modified (1950 - 2010)", "averageSalePrice", "Average Sales Price")

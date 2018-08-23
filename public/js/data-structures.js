@@ -1,5 +1,7 @@
 // Stacked bar chart data
-const mapData = (keys, dataToMap, count, columnToCount, getAverage) =>{
+
+// Add for year built and modded
+const mapData = (keys, dataToMap, count, columnToCount, condOrQual) =>{
 	let tempData = {}
 	
 	dataToMap.map( x =>{
@@ -10,10 +12,10 @@ const mapData = (keys, dataToMap, count, columnToCount, getAverage) =>{
 			tempData[x['Year Built']] = {}
 			tempData[x['Year Built']].total = 0
 		}
-		if(tempData[x['Year Built']][x["Overall Qual"]] ==undefined){
-			tempData[x['Year Built']][x["Overall Qual"]] = 0	
+		if(tempData[x['Year Built']][x[condOrQual]] ==undefined){
+			tempData[x['Year Built']][x[condOrQual]] = 0	
 		}
-		tempData[x['Year Built']][x["Overall Qual"]] += measureToCount;
+		tempData[x['Year Built']][x[condOrQual]] += measureToCount;
 		tempData[x['Year Built']].total += measureToCount;
 		return x['Year Built'];
 	})
@@ -29,20 +31,39 @@ const mapData = (keys, dataToMap, count, columnToCount, getAverage) =>{
 }
 
 const qualKeys = [1,2,3,4,5,6,7,8,9,10];
-const barChart1MappedData = mapData(qualKeys,barChart1Data, 1);
-const barChart2MappedData = mapData(qualKeys,barChart1Data, 0, "SalePrice");
+const condKeys = [1,2,3,4,5,6,7,8,9];
+const barChart1MappedData = mapData(qualKeys,barChart1Data, 1, "", "Overall Qual");
+const barChart2MappedData = mapData(qualKeys,barChart1Data, 0, "SalePrice", "Overall Qual");
+const barChart5MappedData = mapData(condKeys,barChart1Data, 1, "", "Overall Cond");
+const barChart6MappedData = mapData(condKeys,barChart1Data, 0, "SalePrice", "Overall Cond");
 
 
 
-// Average Sales Price by Year
-const salesPriceByYear = {}; 
+
+
+
+
+
+
+
+
+
+
+
+// Average Sales Price by Year Built and Modded
+const salesPriceByYearBuilt = {}; 
+const salesPriceByYearModded = {}; 
 
 barChart1Data.map(x => {
-	if(!salesPriceByYear[x['Year Built']]){
-		salesPriceByYear[x['Year Built']] = [];
+	if(!salesPriceByYearBuilt[x['Year Built']]){
+		salesPriceByYearBuilt[x['Year Built']] = [];
+	}
+	if(!salesPriceByYearModded[x['Year Remod/Add']]){
+		salesPriceByYearModded[x['Year Remod/Add']] = [];
 	}
 
-	salesPriceByYear[x['Year Built']].push(x['SalePrice'])
+	salesPriceByYearBuilt[x['Year Built']].push(x['SalePrice'])
+	salesPriceByYearModded[x['Year Remod/Add']].push(x['SalePrice'])
 });
 
 const reducer = (accumulator, currentValue) => accumulator + currentValue;
@@ -53,10 +74,18 @@ const getMean = arr => {
 	return getSum(arr) / arr.length;
 }
 
-const averageSalesPriceByYear = Object.keys(salesPriceByYear).map(year => {
-	return {"year": year, "averageSalePrice": getMean(salesPriceByYear[year])};
+const averageSalesPriceByYearBuilt = Object.keys(salesPriceByYearBuilt).map(year => {
+	return {"year": year, "averageSalePrice": getMean(salesPriceByYearBuilt[year])};
 })
 
-const totalSalesPriceByYear = Object.keys(salesPriceByYear).map(year => {
-	return {"year": year, "totalSalePrice": getSum(salesPriceByYear[year])};
+const totalSalesPriceByYearBuilt = Object.keys(salesPriceByYearBuilt).map(year => {
+	return {"year": year, "totalSalePrice": getSum(salesPriceByYearBuilt[year])};
+})
+
+const averageSalesPriceByYearModded = Object.keys(salesPriceByYearModded).map(year => {
+	return {"year": year, "averageSalePrice": getMean(salesPriceByYearModded[year])};
+})
+
+const totalSalesPriceByYearModded = Object.keys(salesPriceByYearModded).map(year => {
+	return {"year": year, "totalSalePrice": getSum(salesPriceByYearBuilt[year])};
 })

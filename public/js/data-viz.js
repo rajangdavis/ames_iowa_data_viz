@@ -1,6 +1,6 @@
 // borrowed from https://bl.ocks.org/mbostock/3886208
 const plotStackedBarChart = (elementSelector,finalData,keys, chartTitle, legendFill) =>{
-	let localLegendFill = legendFill == undefined ? "#EFF6E0" : legendFill;
+	let localLegendFill = legendFill == undefined ? "#000" : legendFill;
 	const barChart = d3.select(elementSelector),
     barChartMargin = {top: 20, right: 20, bottom: 30, left: 40},
     barChartWidth = +barChart.attr("width") - barChartMargin.left - barChartMargin.right,
@@ -91,5 +91,9 @@ const plotStackedBarChart = (elementSelector,finalData,keys, chartTitle, legendF
 		.text(function(d) { return d; });	
 }
 
-plotStackedBarChart("#bar-chart-1", barChart1MappedData, qualKeys, "Count of Overall Quality","#000");
-plotStackedBarChart("#bar-chart-2", barChart2MappedData, qualKeys, "Sum of Sales Prices by Quality", "#000");
+plotStackedBarChart("#bar-chart-1", barChart1MappedData, qualKeys, "Count of Houses Sold");
+plotStackedBarChart("#bar-chart-2", barChart2MappedData, qualKeys, "Sum of Sales Prices by Quality",);
+plotStackedBarChart("#bar-chart-5", barChart5MappedData, condKeys, "Count of Houses Sold");
+plotStackedBarChart("#bar-chart-6", barChart6MappedData, condKeys, "Sum of Sales Prices by Condition",);
+
+
