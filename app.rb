@@ -1,6 +1,5 @@
 require 'sinatra'
 require 'csv'
-require "sinatra/json"
 
 # I want to cache results
 before do
