@@ -52,7 +52,7 @@ const plotBarChart = (elemSelector, data, xAxis, xAxisTitle, yAxis, yAxisTitle) 
             .attr("height", function(d) { return height - y(d[yAxis]); });
 }
 
-plotBarChart("#bar-chart-3", averageSalesPriceByYearBuilt, "year" , "Year Built (1872 - 2010)", "averageSalePrice", "Average Sales Price")
-plotBarChart("#bar-chart-4", totalSalesPriceByYearBuilt, "year" , "Year Built (1872 - 2010)", "totalSalePrice", "Total of Sales Price")
-plotBarChart("#bar-chart-7", totalSalesPriceByYearModded, "year" , "Year Modified (1950 - 2010)", "totalSalePrice", "Total of Sales Price")
-plotBarChart("#bar-chart-8", averageSalesPriceByYearModded, "year" , "Year Modified (1950 - 2010)", "averageSalePrice", "Average Sales Price")
+plotBarChart("#bar-chart-1", averageSalesPriceByYearBuilt, "year" , "Year Built (1872 - 2010)", "averageSalePrice", "Average Sales Price")
+plotBarChart("#bar-chart-2", totalSalesPriceByYearBuilt, "year" , "Year Built (1872 - 2010)", "totalSalePrice", "Total of Sales Price")
+plotBarChart("#bar-chart-3", totalSalesPriceByYearModded, "year" , "Year Modified (1950 - 2010)", "totalSalePrice", "Total of Sales Price")
+plotBarChart("#bar-chart-4", averageSalesPriceByYearModded, "year" , "Year Modified (1950 - 2010)", "averageSalePrice", "Average Sales Price")
