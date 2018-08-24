@@ -18,10 +18,19 @@ section *{
 .axis .domain {
   display: none;
 }
+
+h1#title{
+	font-size:36px !important;
+}
+
 g.tick *{
 	stroke:#000;
 }
 
 h1.questions, h1.findings{
 	font-size:36px !important;
+}
+#small{
+	font-weight: 100;
+	opacity: .25;
 }

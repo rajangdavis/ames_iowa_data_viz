@@ -52,6 +52,7 @@ const plotBarChart = (elemSelector, data, xAxis, xAxisTitle, yAxis, yAxisTitle) 
             .attr("height", function(d) { return height - y(d[yAxis]); });
 }
 
+// It feels good to write an honest for loop once in a while...
 for (var i = 1; i < 7; i++) {
     let column = i <= 2 ? 'yearBuilt' : i > 2 && i < 5 ? 'yearModded' : 'yearSold';
     let data = i%2 == 0 ? averageSalesPrice[column] : totalSalesPrice[column];

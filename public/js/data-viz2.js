@@ -100,7 +100,7 @@ plotStackedBarChart("#bar-chart-12", barChart12MappedData, qualKeys, "Sum of Sal
 
 plotStackedBarChart("#bar-chart-13", barChart13MappedData, condKeys, "Count of Houses Sold", "Year Built");
 plotStackedBarChart("#bar-chart-14", barChart14MappedData, condKeys, "Sum of Sales Prices (in millions) by Condition", "Year Built");
-plotStackedBarChart("#bar-chart-15", barChart15MappedData, condKeys, "Count of Houses Sold", "Year Remod/Add");
-plotStackedBarChart("#bar-chart-16", barChart16MappedData, condKeys, "Sum of Sales Prices (in millions) by Condition", "Year Remod/Add");
-plotStackedBarChart("#bar-chart-17", barChart17MappedData, condKeys, "Count of Houses Sold", "Yr Sold");
-plotStackedBarChart("#bar-chart-18", barChart18MappedData, condKeys, "Sum of Sales Prices (in millions) by Condition", "Yr Sold");
+// plotStackedBarChart("#bar-chart-15", barChart15MappedData, condKeys, "Count of Houses Sold", "Year Remod/Add");
+// plotStackedBarChart("#bar-chart-16", barChart16MappedData, condKeys, "Sum of Sales Prices (in millions) by Condition", "Year Remod/Add");
+// plotStackedBarChart("#bar-chart-17", barChart17MappedData, condKeys, "Count of Houses Sold", "Yr Sold");
+// plotStackedBarChart("#bar-chart-18", barChart18MappedData, condKeys, "Sum of Sales Prices (in millions) by Condition", "Yr Sold");

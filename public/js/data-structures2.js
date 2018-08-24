@@ -1,5 +1,4 @@
 // Stacked bar chart data
-// Add for year built and modded
 const mapData = (keys, dataToMap, count, columnToCount, condOrQual, builtModdedSold) =>{
 	let tempData = {}
 	
