@@ -10,7 +10,7 @@
 <body>
 	<div class="reveal">
 		<div class="slides">
-			<!-- <section>
+			<section>
 			<h1 id="title">The Cost of Quality</h1>
 			<br>
 			<h2 class="spaced">Ames Iowa House Pricing Data</h3>
@@ -22,18 +22,9 @@
 			</section>
 
 			<section>
-			<br>
-			<h1>Methodology:</h1>
-			<ul>
-
-			</ul>
-			</section>
-
-			<section>
-			<br>
-			<h1>Finding 1:</h1>
-			</section> -->
-			<section>
+				<section>
+					<h1 class="findings">Finding 1:</h1>
+				</section>
 				<section>
 					<h4>Sum of Sales Price by Year Built</h4>
 					<br>
@@ -45,7 +36,11 @@
 					<svg id="bar-chart-2" width="960" height="500"></svg>
 				</section>
 			</section>
+
 			<section>
+				<section>
+					<h1 class="findings">Finding 2:</h1>
+				</section>
 				<section>
 					<h4>Sum of Sales Price by Year Modded/Added</h4>
 					<br>
@@ -57,32 +52,123 @@
 					<svg id="bar-chart-4" width="960" height="500"></svg>
 				</section>
 			</section>
+
 			<section>
 				<section>
-					<h4>Distribution of Overall Quality by Year Built</h4>
+					<h1 class="findings">Finding 3:</h1>
+				</section>
+				<section>
+					<h4>Sum of Sales Price by Year Sold</h4>
 					<br>
 					<svg id="bar-chart-5" width="960" height="500"></svg>
 				</section>
 				<section>
-					<h4>Sum of Sales Price by Overall Quality and Year Built</h4>
+					<h4>Average Sales Price by Year Sold</h4>
 					<br>
 					<svg id="bar-chart-6" width="960" height="500"></svg>
 				</section>
 			</section>
-			<!-- <section>
+
+			<section>
 				<section>
-					<h4>Distribution of Overall Condition by Year Modded/Added</h4>
+					<h1 class="findings">Finding 4:</h1>
+				</section>
+				<section>
+					<h4>Distribution of Overall Quality by Year Built</h4>
 					<br>
 					<svg id="bar-chart-7" width="960" height="500"></svg>
 				</section>
 				<section>
-					<h4>Sum of Sales Price by Overall Condition and Year Modded/Added</h4>
+					<h4>Sum of Sales Price by Overall Quality and Year Built</h4>
 					<br>
 					<svg id="bar-chart-8" width="960" height="500"></svg>
 				</section>
-			</section> -->
+			</section>
+
 			<section>
-			<h1>Questions?</h1>
+				<section>
+					<h1 class="findings">Finding 5:</h1>
+				</section>
+				<section>
+					<h4>Distribution of Overall Quality by Year Modded/Added</h4>
+					<br>
+					<svg id="bar-chart-9" width="960" height="500"></svg>
+				</section>
+				<section>
+					<h4>Sum of Sales Price by Overall Quality and Year Modded/Added</h4>
+					<br>
+					<svg id="bar-chart-10" width="960" height="500"></svg>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h1 class="findings">Finding 6:</h1>
+				</section>
+				<section>
+					<h4>Distribution of Overall Quality by Year Sold</h4>
+					<br>
+					<svg id="bar-chart-11" width="960" height="500"></svg>
+				</section>
+				<section>
+					<h4>Sum of Sales Price by Overall Quality and Year Sold</h4>
+					<br>
+					<svg id="bar-chart-12" width="960" height="500"></svg>
+				</section>
+			</section>
+
+
+			<section>
+				<section>
+					<h1 class="findings">Finding 7:</h1>
+				</section>
+				<section>
+					<h4>Distribution of Overall Condition by Year Built</h4>
+					<br>
+					<svg id="bar-chart-13" width="960" height="500"></svg>
+				</section>
+				<section>
+					<h4>Sum of Sales Price by Overall Condition and Year Built</h4>
+					<br>
+					<svg id="bar-chart-14" width="960" height="500"></svg>
+				</section>
+			</section>
+
+
+			<section>
+				<section>
+					<h1 class="findings">Finding 8:</h1>
+				</section>
+				<section>
+					<h4>Distribution of Overall Condition by Year Modded/Added</h4>
+					<br>
+					<svg id="bar-chart-15" width="960" height="500"></svg>
+				</section>
+				<section>
+					<h4>Sum of Sales Price by Overall Condition and Year Modded/Added</h4>
+					<br>
+					<svg id="bar-chart-16" width="960" height="500"></svg>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h1 class="findings">Finding 9:</h1>
+				</section>
+				<section>
+					<h4>Distribution of Overall Condition by Year Sold</h4>
+					<br>
+					<svg id="bar-chart-17" width="960" height="500"></svg>
+				</section>
+				<section>
+					<h4>Sum of Sales Price by Overall Condition and Year Sold</h4>
+					<br>
+					<svg id="bar-chart-18" width="960" height="500"></svg>
+				</section>
+			</section>
+
+			<section>
+			<h1 class="questions">Questions?</h1>
 			</section>
 		</div>
 	</div>
@@ -90,9 +176,10 @@
 <script src="/js/reveal.min.js"></script>
 <script>
 	Reveal.initialize();
-	const barChart1Data = <%= @bar_chart_1_data %>;
+	const barChartData = <%= @chart_data %>;
 </script>
 <script src="/js/d3.v4.min.js"></script>
 <script src="/js/data-structures.js"></script>
+<script src="/js/data-structures2.js"></script>
 <script src="/js/data-viz.js"></script>
 <script src="/js/data-viz2.js"></script>

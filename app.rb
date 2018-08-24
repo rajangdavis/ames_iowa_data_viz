@@ -11,7 +11,7 @@ end
 # I don't know my data structures up front
 # all of the time
 
-def stacked_bar_chart_data
+def chart_data
 	# This is a a reference to the file so that it can be read
 	@data = File.new("./public/data/clean_train.csv", "r")
 
@@ -19,10 +19,10 @@ def stacked_bar_chart_data
 	@csv = CSV.new(@data, :headers => true, :converters => :all)
 
 	# Parses the CSV to the @accounts_to_create array as JSON object
-	@csv.to_a.map {|row| ret = row.to_hash;  ret.delete(ret.keys.first); ret.slice("Overall Qual","Year Built","Overall Cond", "SalePrice","Year Remod/Add") }.to_json
+	@csv.to_a.map {|row| ret = row.to_hash;  ret.delete(ret.keys.first); ret.slice("Overall Qual","Year Built","Overall Cond", "SalePrice","Year Remod/Add", "Yr Sold") }.to_json
 end
 
 get '/' do  
-	@bar_chart_1_data = stacked_bar_chart_data
+	@chart_data = chart_data
 	erb :"index"
 end 

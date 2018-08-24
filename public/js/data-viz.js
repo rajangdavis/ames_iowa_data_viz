@@ -1,98 +1,62 @@
-// borrowed from https://bl.ocks.org/mbostock/3886208
-const plotStackedBarChart = (elementSelector,finalData,keys, chartTitle, builtOrModded) =>{
-	const barChart = d3.select(elementSelector),
-    barChartMargin = {top: 20, right: 20, bottom: 30, left: 40},
-    barChartWidth = +barChart.attr("width") - barChartMargin.left - barChartMargin.right,
-    barChartHeight = +barChart.attr("height") - barChartMargin.top - barChartMargin.bottom,
-    g = barChart.append("g").attr("transform", "translate(" + barChartMargin.left + "," + barChartMargin.top + ")");
+// borrowed from https://bl.ocks.org/mbostock/3885304
+const plotBarChart = (elemSelector, data, xAxis, xAxisTitle, yAxis, yAxisTitle) =>{
+    let barChart = d3.select(elemSelector),
+        margin = {top: 20, right: 20, bottom: 30, left: 40},
+        width = +barChart.attr("width") - margin.left - margin.right,
+        height = +barChart.attr("height") - margin.top - margin.bottom;
 
-	var x = d3.scaleBand()
-	    .rangeRound([0, barChartWidth])
-	    .paddingInner(0.05)
-	    .align(0.1);
+    let x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
+        y = d3.scaleLinear().rangeRound([height, 0]);
 
-	var y = d3.scaleLinear()
-	    .rangeRound([barChartHeight, 0]);
+    let g = barChart.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-	var z = d3.scaleOrdinal()
-		// http://colorbrewer2.org/#type=diverging&scheme=RdYlGn&n=10
-	    .range(['#a50026','#d73027','#f46d43','#fdae61','#fee08b','#d9ef8b','#a6d96a','#66bd63','#1a9850','#006837']);
+    x.domain(data.map(function(d) { return d[xAxis]; }));
+    y.domain([0, d3.max(data, function(d) { return d[yAxis]; })]);
 
-	x.domain(finalData.map(function(d) {return d[builtOrModded]; }));
-	y.domain([0, d3.max(finalData, function(d) { return d.total; })]).nice();
-	z.domain(keys);
+    g.append("g")
+        .attr("class", "axis")
+        .attr("fill", "#000")
+        .attr("transform", "translate(0," + height + ")")
+        .append("text")
+            .style("fill","#000")
+            .attr("y", 24.5)
+            .attr("x", (width / 2 ) )
+            .attr("fill", "#000")
+            .attr("font-weight", "bold")
+            .text(xAxisTitle)
+                .attr("text-anchor", "middle")
+                .attr("dominant-baseline", "central")
+        .call(d3.axisBottom(x));
 
-	g.append("g")
-		.selectAll("g")
-		.data(d3.stack().keys(keys)(finalData))
-		.enter().append("g")
-		.attr("fill", function(d) { return z(d.key); })
-	.selectAll("rect")
-	.data(function(d) { return d; })
-	.enter().append("rect")
-		.attr("class",function(d) { return y(d[1]); })
-		.attr("x", function(d) { return x(d.data[builtOrModded]); })
-		.attr("y", function(d) { return y(d[1]); })
-		.attr("height", function(d) { return y(d[0]) - y(d[1]); })
-		.attr("width", x.bandwidth());
+    g.append("g")
+        .style("fill","#000")
+        .attr("class", "axis")
+            .call(d3.axisLeft(y).ticks(null, "s"))
+        .append("text")
+            .style("fill","#000")
+            .attr("x", -35)
+            .attr("y", y(y.ticks().pop()) + 0.5)
+            .attr("dy", "-1.32em")
+            .attr("fill", "#000")
+            .attr("font-weight", "bold")
+            .attr("text-anchor", "start")
+            .text(yAxisTitle);
 
-	g.append("g")
-		.attr("class", "axis")
-		.attr("fill", "#000")
-		.attr("transform", "translate(0," + barChartHeight + ")")
-		.append("text")
-			.style("fill","#000")
-			.attr("y", y(y.ticks().pop()) + 0.5)
-			.attr("x", (barChartWidth / 2 ))
-			.attr("dy", "2.32em")
-			.attr("fill", "#000")
-			.attr("font-weight", "bold")
-			.text("Year Built (1872 - 2010)")
-				.attr("text-anchor", "middle")
-				.attr("dominant-baseline", "central")
-		.call(d3.axisBottom(x));
-
-	g.append("g")
-		.style("fill","#000")
-		.attr("class", "axis")
-			.call(d3.axisLeft(y).ticks(null, "s"))
-		.append("text")
-			.style("fill","#000")
-			.attr("x", 2)
-			.attr("y", y(y.ticks().pop()) + 0.5)
-			.attr("dy", "0.32em")
-			.attr("fill", "#000")
-			.attr("font-weight", "bold")
-			.attr("text-anchor", "start")
-			.text(chartTitle);
-
-	let legend = g.append("g")
-		.attr("font-family", "sans-serif")
-		.attr("font-size", 10)
-		.attr("text-anchor", "end")
-			.selectAll("g")
-		.data(keys.slice().reverse())
-			.enter().append("g")
-		.attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
-
-	legend.append("rect")
-		.attr("x", barChartWidth - 19)
-		.attr("width", 19)
-		.attr("height", 19)
-		.attr("fill", z)
-		.attr("class",function(d) { return d; });
-
-	legend.append("text")
-		.attr("x", barChartWidth - 24)
-		.attr("y", 9.5)
-		.attr("dy", "0.32em")
-		.style("fill","#000")
-		.text(function(d) { return d; });	
+    g.selectAll(".bar")
+        .data(data)
+        .enter().append("rect")
+            .attr("class", "bar")
+            .attr("x", function(d) { return x(d[xAxis]); })
+            .attr("y", function(d) { return y(d[yAxis]); })
+            .attr("width", x.bandwidth())
+            .attr("height", function(d) { return height - y(d[yAxis]); });
 }
 
-plotStackedBarChart("#bar-chart-5", barChart5MappedData, qualKeys, "Count of Houses Sold", "Year Built");
-plotStackedBarChart("#bar-chart-6", barChart6MappedData, qualKeys, "Sum of Sales Prices by Quality", "Year Built");
-// plotStackedBarChart("#bar-chart-7", barChart7MappedData, condKeys, "Count of Houses Sold");
-// plotStackedBarChart("#bar-chart-8", barChart8MappedData, condKeys, "Sum of Sales Prices by Condition");
-
-
+for (var i = 1; i < 7; i++) {
+    let column = i <= 2 ? 'yearBuilt' : i > 2 && i < 5 ? 'yearModded' : 'yearSold';
+    let data = i%2 == 0 ? averageSalesPrice[column] : totalSalesPrice[column];
+    let columnLabel = i <= 2 ? "Year Built (1872 - 2010)" : i > 2 && i < 5 ? "Year Modified (1950 - 2010)" : "Year Sold (2006 - 2010)";
+    let totalOrAverageKey = i%2 == 0 ? "averageSalePrice" : "totalSalePrice";
+    let totalOrAverageLabel = i%2 == 0 ? "Average Sales Price" : "Total of Sales Price (in millions)";
+    plotBarChart(`#bar-chart-${i}`, data, "year" , columnLabel, totalOrAverageKey, totalOrAverageLabel);
+}

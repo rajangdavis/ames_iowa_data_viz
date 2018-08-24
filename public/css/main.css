@@ -21,3 +21,7 @@ section *{
 g.tick *{
 	stroke:#000;
 }
+
+h1.questions, h1.findings{
+	font-size:36px !important;
+}
