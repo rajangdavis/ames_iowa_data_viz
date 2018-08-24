@@ -39,10 +39,7 @@ const barChart12MappedData = mapData(qualKeys,barChartData, 0, "SalePrice", "Ove
 
 const barChart13MappedData = mapData(condKeys,barChartData, 1, "", "Overall Cond", "Year Built");
 const barChart14MappedData = mapData(condKeys,barChartData, 0, "SalePrice", "Overall Cond", "Year Built");
-const barChart15MappedData = mapData(condKeys,barChartData, 1, "", "Overall Cond", "Year Remod/Add");
-const barChart16MappedData = mapData(condKeys,barChartData, 0, "SalePrice", "Overall Cond", "Year Remod/Add");
-const barChart17MappedData = mapData(condKeys,barChartData, 1, "", "Overall Cond", "Yr Sold");
-const barChart18MappedData = mapData(condKeys,barChartData, 0, "SalePrice", "Overall Cond", "Yr Sold");
-
-
-
+// const barChart15MappedData = mapData(condKeys,barChartData, 1, "", "Overall Cond", "Year Remod/Add");
+// const barChart16MappedData = mapData(condKeys,barChartData, 0, "SalePrice", "Overall Cond", "Year Remod/Add");
+// const barChart17MappedData = mapData(condKeys,barChartData, 1, "", "Overall Cond", "Yr Sold");
+// const barChart18MappedData = mapData(condKeys,barChartData, 0, "SalePrice", "Overall Cond", "Yr Sold");

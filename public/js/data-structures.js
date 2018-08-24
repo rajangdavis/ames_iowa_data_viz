@@ -1,5 +1,6 @@
 // Bar Charts
 // Average Sales Price by Year Built, Modded, and Sold
+// I could represent this as one Object, but I won't...
 let salesPriceByYearBuilt = {}; 
 let salesPriceByYearModded = {}; 
 let salesPriceByYearSold = {}; 
@@ -29,7 +30,6 @@ const getSum= arr => {
 const getMean = arr => {
 	return getSum(arr) / arr.length;
 }
-
 
 const averageSalesPrice = {
 	"yearBuilt": Object.keys(salesPriceByYearBuilt).map(year => {

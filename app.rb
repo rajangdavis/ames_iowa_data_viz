@@ -9,7 +9,6 @@ end
 # I am making a transformation 
 # on the raw data set because
 # I don't know my data structures up front
-# all of the time
 
 def chart_data
 	# This is a a reference to the file so that it can be read
